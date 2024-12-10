@@ -8,7 +8,7 @@ from cats.models import Cat
 class CatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cat
-        fields = ('name', 'years_of_experience', 'breed', 'salary')
+        fields = ('id', 'name', 'years_of_experience', 'breed', 'salary')
 
     def validate_breed(self, value):
         response = requests.get(f"https://api.thecatapi.com/v1/breeds/search", params={"q": value})
@@ -22,4 +22,4 @@ class CatSerializer(serializers.ModelSerializer):
 class CatUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cat
-        fields = ('salary',)
+        fields = ('id', 'salary',)
